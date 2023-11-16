@@ -81,8 +81,8 @@ get_spatial <- function(digital.raster =NULL,
     coords    <- data.frame(x = env.dataframe[,lng], y = env.dataframe[,lat])
   }
 
- # sp::proj4string(  coords) = sp::CRS("+proj=longlat +datum=WGS84")
-  sp_vector <- sf::st_as_sf(coords)
+ # sp_vector <- sf::st_as_sf(coords)
+ sp_vector <-  sf::st_as_sf(bien_data_clean, coords = c("x", "y"))
 
 
   if(isFALSE(class(digital.raster)[1] == "SpatRaster")) digital.raster = terra::rast(digital.raster)
