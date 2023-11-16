@@ -82,7 +82,7 @@ get_spatial <- function(digital.raster =NULL,
   }
 
  # sp_vector <- sf::st_as_sf(coords)
- sp_vector <-  sf::st_as_sf(bien_data_clean, coords = c("x", "y"))
+ sp_vector <-  sf::st_as_sf(coords, coords = c("x", "y"))
 
 
   if(isFALSE(class(digital.raster)[1] == "SpatRaster")) digital.raster = terra::rast(digital.raster)
