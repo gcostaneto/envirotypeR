@@ -1,0 +1,27 @@
+Package: envirotypeR
+Type: Package
+Title: A Framework for Plant and Animal Enviromics
+Version: 0.1.0
+Author: G Martins Costa-Neto
+Maintainer: G Martins Costa-Neto <germano.cneto@gmail.com>
+Description: A software package has been developed to facilitate enviromics research in plant and animal science, with a specific emphasis on genetic improvement (breeding) and ecology. 
+    This comprehensive tool is designed to support various stages of the research process, including the steps of
+    (1) Data Collection, Utilizing remote sensing tools and geographic datasets.
+    (2) Data Processing, Performing computations for a diverse range of environmental indexes, synthetic environmental features, and ensuring data quality control.
+    (3) Envirotyping Studies, Conducting analyses that combine environmental factors with typing information, encompassing the characterization of envirotypes in terms of frequency and distribution.
+    (4) Modeling, Fitting spatial or climate-enriched models for applied quantitative genetics and conducting research on phenotype prediction.
+    This software package aims to stYreamline and enhance the efficiency of research activities in the field of enviromics.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    nasapower,
+    plyr,
+    doParallel,
+    parallel,
+    foreach,
+    raster,
+    terra,
+    reshape2,
+    sf
+RoxygenNote: 7.2.3
