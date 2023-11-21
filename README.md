@@ -17,6 +17,17 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
 ```
 
+## Current Resources
+
+Current version of this package (0.1.1, Nov 2023) has the following modules: 
+
+(1) Generation of a wide number of **environmental features** using remote-data collection based on geographic coordinates and time windows (e.g., planting dates).
+
+* `envirotypeR::get_climate()`
+* `envirotypeR::get_soil()`
+* `envirotypeR::get_weather()`
+* `envirotypeR::SRTM_elevation`
+
 ## Updates
 
 * **envirotypeR v0.1.1**  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from envirotypeR::SRTM_elevation / data("SRTM_elevation") and to run examples using envirotypeR::get_spatial()
