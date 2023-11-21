@@ -9,7 +9,7 @@
 
 ## Installation 
 
-Current version of this package (0.1.1, Nov 2023)  can be installed directly from this repository
+Current version of this package (v0.1.2, Nov 2023)  can be installed directly from this repository
 using the `devtools` package:
 
 ```
@@ -19,7 +19,7 @@ devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
 
 ## Current Resources
 
-Current version of this package (0.1.1, Nov 2023) has the following modules: 
+Current version of this package (v0.1.2, Nov 2023) has the following modules: 
 
 (1) Generation of a wide number of **environmental features** using remote-data collection based on geographic coordinates and time windows (e.g., planting dates).
 
@@ -31,6 +31,9 @@ Current version of this package (0.1.1, Nov 2023) has the following modules:
 
 ## History
 
+
+* **envirotypeR v0.1.2**  includes a new data set of 27 features from FAO-GAEZ`envirotypeR::GAEZ_AEZ`/ data("GAEZ_AEZ")
+  
 * **envirotypeR v0.1.1**  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from `envirotypeR::SRTM_elevation`/ data("SRTM_elevation") and to run examples using `envirotypeR::get_spatial()`
   
 * **envirotypeR v0.1.0** includes `envirotypeR::get_climate()` based on `nasapower` to collect climatological data (monthly scales)
