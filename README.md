@@ -48,6 +48,9 @@ devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
 
 # Coming Soon
 
+* Tutorials and Getting Help
+* Publication
+* CRAN
 * process_cleaning()
 * process_index()
 * process_stages() 
