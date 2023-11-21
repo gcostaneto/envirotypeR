@@ -67,3 +67,13 @@ devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
 * predict_phenotype()
 * plot_envirotype()
 * envirotyping()
+
+
+
+<div align='center'>
+  
+<a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=159092&s=1' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free website hit counter</a></small>
+
+</div>
+
+
