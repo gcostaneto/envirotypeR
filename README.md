@@ -19,31 +19,31 @@ devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
 
 ## Updates
 
-* envirotypeR v0.1.1  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from envirotypeR::SRTM_elevation / data("SRTM_elevation") and to run examples using envirotypeR::get_spatial()
+* **envirotypeR v0.1.1**  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from envirotypeR::SRTM_elevation / data("SRTM_elevation") and to run examples using envirotypeR::get_spatial()
   
-* envirotypeR v0.1.0 includes `envirotypeR::get_climate()` based on `nasapower` to collect climatological data (monthly scales)
+* **envirotypeR v0.1.0** includes `envirotypeR::get_climate()` based on `nasapower` to collect climatological data (monthly scales)
   
-* envirotypeR v0.0.1 updates envirotypeR::get_spatial() to collect info from `.nc` files
+* **envirotypeR v0.0.1** updates envirotypeR::get_spatial() to collect info from `.nc` files
   
-* envirotypeR v0.0.9 updates envirotypeR::get_spatial() to collect info from multiple rasters (`rasterStack` format)
+* **envirotypeR v0.0.9** updates envirotypeR::get_spatial() to collect info from multiple rasters (`rasterStack` format)
  
-* envirotypeR v0.0.8 updates envirotypeR::get_spatial() to run using `sf` and `terra` packages
+* **envirotypeR v0.0.8** updates envirotypeR::get_spatial() to run using `sf` and `terra` packages
   
-* envirotypeR v0.0.7 includes `envirotypeR::get_spatial()` to collect point-estimates from raster files (digital image files)
+* **envirotypeR v0.0.7** includes `envirotypeR::get_spatial()` to collect point-estimates from raster files (digital image files)
   
-* envirotypeR v0.0.6 updates envirotypeR::get_soil() to collect soil data
+* **envirotypeR v0.0.6** updates envirotypeR::get_soil() to collect soil data
   
-* envirotypeR v0.0.5 updates envirotypeR::get_soil() to collect soil data
+* **envirotypeR v0.0.5** updates envirotypeR::get_soil() to collect soil data
   
-* envirotypeR v0.0.4 includes `envirotypeR:get_soil()` to collect soil data from [SoilGrids](https://soilgrids.org/) using codes developed by [B.Monier](https://github.com/btmonier) (Buckler Lab Hackathon)
+* **envirotypeR v0.0.4** includes `envirotypeR:get_soil()` to collect soil data from [SoilGrids](https://soilgrids.org/) using codes developed by [B.Monier](https://github.com/btmonier) (Buckler Lab Hackathon)
   
 * rgdal is retired! We fixed it by Oct 21 2023. More info about rgdal's retirement [here](https://r-spatial.org/r/2022/04/12/evolution.html)
 
-* envirotypeR v0.0.3 updates EnvRtype::get_weather() to include more environmental features (either from NASA POWER and computed variables)
+* **envirotypeR v0.0.3** updates EnvRtype::get_weather() to include more environmental features (either from NASA POWER and computed variables)
 
-* envirotypeR v0.0.2 updates EnvRtype::get_weather() to incorporate `envirotypeR::get_weather()` and `EnvRtype::processWTH()`
+* **envirotypeR v0.0.2** updates EnvRtype::get_weather() to incorporate `envirotypeR::get_weather()` and `EnvRtype::processWTH()`
 
-* envirotypeR v0.0.1 repo was created using `EnvRtype` as reference (Sep 2023)
+* **envirotypeR v0.0.1** repo was created using `EnvRtype` as reference (Sep 2023)
 
 
 # Coming Soon
