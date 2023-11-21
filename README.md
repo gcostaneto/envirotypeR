@@ -89,6 +89,9 @@ Current version of this package (0.1.1, Nov 2023) has the following modules:
 
 Costa-Neto, G., Galli, G., Carvalho, H. F., Crossa, J., and Fritsche-Neto, R. (2021). EnvRtype: a software to interplay enviromics and quantitative genomics in agriculture. **G3 Genes|Genomes|Genetics**. doi:10.1093/g3journal/jkab040.
 
+# Usage
+
+Please contact <germano.cneto@gmail.com> for more detail about the usage, suggestions, bugs or help.
 
 <div align='center'>
   
