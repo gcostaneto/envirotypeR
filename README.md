@@ -28,6 +28,7 @@ Current version of this package (v0.1.2, Nov 2023) has the following modules:
 * `envirotypeR::get_spatial()`
 * `envirotypeR::get_weather()`
 * `envirotypeR::SRTM_elevation`
+* `envirotypeR::GAEZ_AEZ`
 
 ## History
 
