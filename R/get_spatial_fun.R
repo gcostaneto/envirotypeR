@@ -16,7 +16,7 @@
 #'
 #' @author Germano Martins Costa Neto
 #'
-#' @param digital.raster RasterStack or SpatialRaster file
+#' @param digital.raster RasterStack or SpatRaster file
 #' @param which.raster.number numeric, if digital.raster is RasterStack this number denotes which raster to be used
 #' @param env.id vector (character or level). Identifimessageion of the site/environment (e.g. Piracicaba01).
 #' @param lat vector (numeric). Latitude values of the site/environment (e.g. -13.05) in WGS84.
@@ -25,6 +25,15 @@
 #' @param merge logical
 #' @param name.feature vector (character)
 #
+#' @examples
+#'\dontrun{
+#' ## Elevation data for a given site
+#' reference_table = data.frame(env = 'NM',lat = -13.05, lng =   -56.05)
+#' get_spatial(env.dataframe = reference_table,
+#' digital.raster = envirotypeR::SRTM_elevation,
+#' lat = 'lat',lng = 'lng',env.id = 'env',
+#' name.feature = 'Elevation' )
+#'}
 #' @importFrom terra rast
 #' @importFrom terra extract
 #' @importFrom sf st_as_sf
@@ -75,15 +84,15 @@ get_spatial <- function(digital.raster =NULL,
 
   if(is.numeric(lat) & is.numeric(lng))
   {
-    coords    <- data.frame(x = lng, y = lat)
+    .coords    <- data.frame(x = lng, y = lat)
   }
   else{
-    coords    <- data.frame(x = env.dataframe[,lng], y = env.dataframe[,lat])
+    .coords    <- data.frame(x = env.dataframe[,lng], y = env.dataframe[,lat])
   }
 
+ # sp::proj4string(  coords) = sp::CRS("+proj=longlat +datum=WGS84")
  # sp_vector <- sf::st_as_sf(coords)
- sp_vector <-  sf::st_as_sf(coords, coords = c("x", "y"))
-
+  sp_vector <-  sf::st_as_sf(.coords, coords = c("x", "y"))
 
   if(isFALSE(class(digital.raster)[1] == "SpatRaster")) digital.raster = terra::rast(digital.raster)
   extracted_values <- terra::extract(digital.raster , sp_vector)

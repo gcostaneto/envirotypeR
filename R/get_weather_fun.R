@@ -1,3 +1,14 @@
+#'==================================================================================================
+#' Title.    : Collecting daily weather from NASA POWER
+#' Author.   : G Costa-Neto
+#' Created at: 2020-12-30
+#' Updated at: 2023-11-21 (envirotypeR version 0.1.1)
+#' Previous versions: EnvRtype::extract_GIS()
+#' Current Version: 0.1.1 (envirotypeR)
+#'
+#' get_weather(), based on nasapower::get_power() from Sparks et al 20218
+#'==================================================================================================
+#'
 #'@title  Easily Collection of Worldwide Daily Weather Data
 #'
 #'
@@ -5,7 +16,7 @@
 #'
 #' @author Germano Martins Costa Neto, modified by Tiago Olivoto
 #'
-#' @param env.id vector (character or level). Identifimessageion of the site/environment (e.g. Piracicaba01).
+#' @param env.id vector (character or level). Identifies  the site/environment (e.g. Piracicaba01).
 #' @param lat vector (numeric). Latitude values of the site/environment (e.g. -13.05) in WGS84.
 #' @param lon vector (numeric). Longitude values site/environment (e.g. -56.05) in WGS84.
 #' @param variables.names vector (character). Name of the variables. Should be "T2M","T2M_MAX","T2M_MIN","PRECTOT", "WS2M","RH2M","T2MDEW", "ALLSKY_SFC_LW_DWN", "ALLSKY_SFC_SW_DWN", and/or "ALLSKY_TOA_SW_DWN". See Details for more information.

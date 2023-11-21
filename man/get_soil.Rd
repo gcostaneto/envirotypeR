@@ -36,6 +36,18 @@ A `data.frame` object
 \description{
 Imports soil features from SoilGrids data set
 }
+\details{
+==================================================================================================
+Title.    : Collecting soil data from SoilGrids
+Author.   : G Costa-Neto, based on B. Monier codes
+Created at: 2022-09-15
+Updated at 2023-11-21 (envirotypeR version 0.1.1)
+Previous versions: -
+Current Version: 0.1.1 (envirotypeR)
+
+get_soil()
+==================================================================================================
+}
 \references{
 Poggio et al (2021). _SoilGrids 2.0: producing soil information for the globe with quantified spatial uncertainty_. European Geosciences Union, <https://doi.org/10.5194/soil-7-217-2021>.
 }

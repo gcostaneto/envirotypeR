@@ -16,7 +16,7 @@ get_spatial(
 )
 }
 \arguments{
-\item{digital.raster}{RasterStack or SpatialRaster file}
+\item{digital.raster}{RasterStack or SpatRaster file}
 
 \item{which.raster.number}{numeric, if digital.raster is RasterStack this number denotes which raster to be used}
 
@@ -46,6 +46,16 @@ Current Version: 0.0.1
 
 get_spatial()
 ==================================================================================================
+}
+\examples{
+\dontrun{
+## Elevation data for a given site
+reference_table = data.frame(env = 'NM',lat = -13.05, lng =   -56.05)
+get_spatial(env.dataframe = reference_table,
+digital.raster = envirotypeR::SRTM_elevation,
+lat = 'lat',lng = 'lng',env.id = 'env',
+name.feature = 'Elevation' )
+}
 }
 \author{
 Germano Martins Costa Neto

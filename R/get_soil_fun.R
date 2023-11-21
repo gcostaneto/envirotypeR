@@ -1,3 +1,14 @@
+#'==================================================================================================
+#' Title.    : Collecting soil data from SoilGrids
+#' Author.   : G Costa-Neto, based on B. Monier codes
+#' Created at: 2022-09-15
+#' Updated at 2023-11-21 (envirotypeR version 0.1.1)
+#' Previous versions: -
+#' Current Version: 0.1.1 (envirotypeR)
+#'
+#' get_soil()
+#'==================================================================================================
+#'
 #'@title  Easily Collection of Soil Features (250m res)
 #'
 #'

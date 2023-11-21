@@ -20,7 +20,7 @@ get_weather(
 )
 }
 \arguments{
-\item{env.id}{vector (character or level). Identifimessageion of the site/environment (e.g. Piracicaba01).}
+\item{env.id}{vector (character or level). Identifies  the site/environment (e.g. Piracicaba01).}
 
 \item{lat}{vector (numeric). Latitude values of the site/environment (e.g. -13.05) in WGS84.}
 
@@ -60,6 +60,18 @@ A data.frame with selected \code{variable.names} collected from a \code{start.da
 Imports daily-scale weather data from the NASA-POWER GIS and geographic data from SRTM database.
 }
 \details{
+==================================================================================================
+Title.    : Collecting daily weather from NASA POWER
+Author.   : G Costa-Neto
+Created at: 2020-12-30
+Updated at: 2023-11-21 (envirotypeR version 0.1.1)
+Previous versions: EnvRtype::extract_GIS()
+Current Version: 0.1.1 (envirotypeR)
+
+get_weather(), based on nasapower::get_power() from Sparks et al 20218
+==================================================================================================
+
+
 The available variables are:
 \itemize{
  \item T2M: Temperature at 2 Meters
