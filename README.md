@@ -25,6 +25,7 @@ Current version of this package (0.1.1, Nov 2023) has the following modules:
 
 * `envirotypeR::get_climate()`
 * `envirotypeR::get_soil()`
+* `envirotypeR::get_spatial()`
 * `envirotypeR::get_weather()`
 * `envirotypeR::SRTM_elevation`
 
