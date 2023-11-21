@@ -35,7 +35,7 @@ devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
   
 * **envirotypeR v0.0.5** updates envirotypeR::get_soil() to collect soil data
   
-* **envirotypeR v0.0.4** includes `envirotypeR:get_soil()` to collect soil data from [SoilGrids](https://soilgrids.org/) using codes developed by [B.Monier](https://github.com/btmonier) (Buckler Lab Hackathon)
+* **envirotypeR v0.0.4** includes `envirotypeR::get_soil()` to collect soil data from [SoilGrids](https://soilgrids.org/) using codes developed by [B.Monier](https://github.com/btmonier) (Buckler Lab Hackathon)
   
 * rgdal is retired! We fixed it by Oct 21 2023. More info about rgdal's retirement [here](https://r-spatial.org/r/2022/04/12/evolution.html)
 
