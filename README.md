@@ -62,7 +62,7 @@ Current version of this package (0.1.1, Nov 2023) has the following modules:
 
 * **EnvRtype** repo was created (Jan 2020)
 
-# Coming Soon
+## Coming Soon
 
 * Tutorials and Getting Help
 * Publication
