@@ -1,0 +1,57 @@
+#' @title  GAEZ v4 data base for Agro-Climatic Resources for Environmental Characterization
+#'
+#'
+#'@description A collection of 27 digital spatial rasters from the Agro-Ecological Zones (AEZ) modelling framework.
+#'    This data was developed by a cooperaation between the Food and Agriculture Organization of the United Nations (FAO) and the International Institute for Applied Systems Analysis (IIASA)
+#' and is available online at <https://gaez.fao.org/> .
+#'
+#'@docType data
+#'
+#'@usage data(GAEZ_AEZ)
+#'
+#' @details
+#' The available variables are:
+#' \itemize{
+#'  \item MSTC: Moisture Regime Class
+#'  \item THRC: Thermal Regime Class
+#'  \item AEZC: Agro-ecological Zone
+#'  \item LGBD: Beginning date of longest component LGP (day-of-year)
+#'  \item N35T: Number of days with Tmax > 35 °C
+#'  \item N45T  Number of days with Tmax > 45 °C
+#'  \item N00T: Number of days with Tmin < 0 °C
+#'  \item N10T: Number of days with Tmin < 10 °C
+#'  \item N15T: Number of days with Tmin < 15 °C
+#'  \item GP10: Temperature growing period (LGPt=10); number of days with Ta > 10 °C
+#'  \item THZC: Thermal Zones
+#'  \item LLCD: Length of longest component LGP (days)
+#'  \item NDDG: Number of dry days during temperature growing period LGPt=5 (days)
+#'  \item NEPR: Net primary production (rain-fed)
+#'  \item NEPI: Net primary production (with irrigation)
+#'  \item TNGD: Total number of growing period days
+#'  \item APPET: Annual P/PET ratio (*100)
+#'  \item MFIR:  Modified Fournier Index (mm)
+#'  \item PPET5: P/PET (*100) for days with Ta > 5 °C
+#'  \item ETAYR: Reference actual evapotranspiration (using AWC=100 mm/m)
+#'  \item WDEYR: Reference evapotranspiration deficit (mm; AWC=100)
+#'  \item SPETS: Seasonal P/PET ratio (*100) in summer (April-September in northern hemisphere)
+#'  \item SPETW: Seasonal P/PET ratio (*100) in winter (October-March in northern hemisphere)
+#'  \item DNRD:  Total number of rain days (days with P > 1 mm)
+#'  \item KGCZ2: Koeppen-Geiger (2-character) classification
+#'  \item KGCZ3: Koeppen-Geiger (3-character) classification
+#'  \item MCRC: Multi-cropping class (rain-fed)
+#' }
+#'@examples
+#'\dontrun{
+#' data(GAEZ_AEZ)
+#' require(raster)
+#' plot(GAEZ_AEZ[[1]]) # plot the fister layer Moisture Regime Class
+#' names(GAEZ_AEZ)
+#'}
+#' @format A RasterStack file
+
+#' @references
+#' Fischer, G. et al (2021). _Global Agro-Ecological Zones v4 – Model documentation_. FAO Publisher, Rome,286p, <URL:https://www.fao.org/documents/card/en/c/cb4744enx>.
+#'
+
+
+"GAEZ_AEZ"

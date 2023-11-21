@@ -70,6 +70,8 @@ get_spatial <- function(digital.raster =NULL,
   message(paste0('Start at...........................', format(startTime, "%a %b %d %X %Y"),'\n'))
   message(paste0('Number of Environmental Units ........',length( envs_to_pull)))
 
+  if(is.null(digital.raster)) stop('Please include a spatial raster')
+
   if(length(digital.raster) == 1 )  digital.raster <- digital.raster
   if(!is.null( which.raster.number ))
   {
@@ -88,6 +90,7 @@ get_spatial <- function(digital.raster =NULL,
   }
   else{
     .coords    <- data.frame(x = env.dataframe[,lng], y = env.dataframe[,lat])
+
   }
 
  # sp::proj4string(  coords) = sp::CRS("+proj=longlat +datum=WGS84")
