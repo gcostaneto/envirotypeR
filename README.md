@@ -28,7 +28,7 @@ Current version of this package (0.1.1, Nov 2023) has the following modules:
 * `envirotypeR::get_weather()`
 * `envirotypeR::SRTM_elevation`
 
-## Updates
+## History
 
 * **envirotypeR v0.1.1**  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from `envirotypeR::SRTM_elevation`/ data("SRTM_elevation") and to run examples using `envirotypeR::get_spatial()`
   
@@ -56,6 +56,11 @@ Current version of this package (0.1.1, Nov 2023) has the following modules:
 
 * **envirotypeR v0.0.1** repo was created using `EnvRtype` as reference (Sep 2023)
 
+* **EnvRtype** published at G3 Journal: Feb 2021
+  
+* **EnvRtype** published at BiorXv : Oct 2020
+
+* **EnvRtype** repo was created (Jan 2020)
 
 # Coming Soon
 
