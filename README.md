@@ -5,7 +5,7 @@
 ## Objective
 
 Enviromics is the field of Biometry and Data Analytics dedicated to the study of the [enviromes](https://en.wikipedia.org/wiki/Envirome) ( core of environmental conditions with the successful biological performance of living beings).
-Envirotyping (environmental + typing) is the process and pool of techniques to conduct enviromics, more specifically in terms of characterizing environmental conditions and discovering descriptors that help in identifying the non-genetic drivers of phenotypic adaptation in plants, animals, or humans. Here we present the **envirotypeR** as a new R package developed to expand [EnvRtype](https://github.com/allogamous/EnvRtype) as a more powerfull toolkit to facilitate the implementation of open-source enviromics in R.
+Envirotyping (environmental + typing) involves a pool of processes and techniques to conduct enviromics, specifically in terms of characterizing environmental conditions and discovering descriptors that help identify the non-genetic drivers of phenotypic adaptation in plants, animals, or humans. Here we present the **envirotypeR** as a new R package developed to expand [EnvRtype](https://github.com/allogamous/EnvRtype) as a more powerfull toolkit to facilitate the implementation of open-source enviromics in R.
 
 ## Installation 
 
