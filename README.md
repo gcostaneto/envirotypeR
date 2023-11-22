@@ -77,6 +77,7 @@ Current version of this package (v0.1.2, Nov 2023) has the following modules:
 * process_stages() 
 * process_synthetic() 
 * process_colinearity()
+* fit_frequency()
 * fit_Wmatrix()
 * fit_Smatrix() 
 * fit_Rmatrix()
