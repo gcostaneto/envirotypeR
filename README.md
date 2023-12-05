@@ -33,39 +33,41 @@ Current version of this package (v0.1.2, Nov 2023) has the following modules:
 ## History
 
 
-* **envirotypeR v0.1.2**  includes a new data set of 27 features from FAO-GAEZ`envirotypeR::GAEZ_AEZ`/ data("GAEZ_AEZ")
+* #017 **envirotypeR v0.1.2**  includes a new data set of 27 features from FAO-GAEZ`envirotypeR::GAEZ_AEZ`/ data("GAEZ_AEZ")
   
-* **envirotypeR v0.1.1**  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from `envirotypeR::SRTM_elevation`/ data("SRTM_elevation") and to run examples using `envirotypeR::get_spatial()`
+* #016 **envirotypeR v0.1.1**  correction of bugs on envirotypeR::get_climate() and includes worldwide 250m elevation data from `envirotypeR::SRTM_elevation`/ data("SRTM_elevation") and to run examples using `envirotypeR::get_spatial()`
   
-* **envirotypeR v0.1.0** includes `envirotypeR::get_climate()` based on `nasapower` to collect climatological data (monthly scales)
+* #015 **envirotypeR v0.1.0** includes `envirotypeR::get_climate()` based on `nasapower` to collect climatological data (monthly scales)
   
-* **envirotypeR v0.0.1** updates `envirotypeR::get_spatial()` to collect info from `.nc` files
+* #014 **envirotypeR v0.0.1** updates `envirotypeR::get_spatial()` to collect info from `.nc` files
   
-* **envirotypeR v0.0.9** updates `envirotypeR::get_spatial()` to collect info from multiple rasters (`rasterStack` format)
+* #013 **envirotypeR v0.0.9** updates `envirotypeR::get_spatial()` to collect info from multiple rasters (`rasterStack` format)
  
-* **envirotypeR v0.0.8** updates `envirotypeR::get_spatial()` to run using `sf` and `terra` packages
+* #012 **envirotypeR v0.0.8** updates `envirotypeR::get_spatial()` to run using `sf` and `terra` packages
   
-* **envirotypeR v0.0.7** includes `envirotypeR::get_spatial()` to collect point-estimates from raster files (digital image files)
+* #011 **envirotypeR v0.0.7** includes `envirotypeR::get_spatial()` to collect point-estimates from raster files (digital image files)
   
-* **envirotypeR v0.0.6** updates `envirotypeR::get_soil()` to collect soil data
+* #010 **envirotypeR v0.0.6** updates `envirotypeR::get_soil()` to collect soil data
   
-* **envirotypeR v0.0.5** updates `envirotypeR::get_soil()` to collect soil data
+* #009 **envirotypeR v0.0.5** updates `envirotypeR::get_soil()` to collect soil data
   
-* **envirotypeR v0.0.4** includes `envirotypeR::get_soil()` to collect soil data from [SoilGrids](https://soilgrids.org/) using codes developed by [B.Monier](https://github.com/btmonier) (Buckler Lab Hackathon)
+* #008 **envirotypeR v0.0.4** includes `envirotypeR::get_soil()` to collect soil data from [SoilGrids](https://soilgrids.org/) using codes developed by [B.Monier](https://github.com/btmonier) (Buckler Lab Hackathon)
   
 * rgdal is retired! We fixed it by Oct 21 2023. More info about rgdal's retirement [here](https://r-spatial.org/r/2022/04/12/evolution.html)
 
-* **envirotypeR v0.0.3** updates `EnvRtype::get_weather()` to include more environmental features (either from NASA POWER and computed variables)
-
-* **envirotypeR v0.0.2** updates `EnvRtype::get_weather()` to incorporate `envirotypeR::get_weather()` and `EnvRtype::processWTH()`
-
-* **envirotypeR v0.0.1** repo was created using `EnvRtype` as reference (Sep 2023)
-
-* **EnvRtype** published at G3 Journal: Feb 2021
+* #007 **envirotypeR v0.0.3** updates `EnvRtype::get_weather()` to include more environmental features (either from NASA POWER and computed variables)
   
-* **EnvRtype** published at BiorXv : Oct 2020
+* #006 **envirotypeR v0.0.2** updates `envirotypeR::get_weather()` to incorporate  `EnvRtype::get_weather()` and `EnvRtype::processWTH()`
 
-* **EnvRtype** repo was created (Jan 2020)
+* #005 **envirotypeR v0.0.1** repo was created using `EnvRtype` as reference (Sep 2023)
+
+* #004 **EnvRtype** : `EnvRtype::get_weather()`  is updated by [T.Olivoto](https://github.com/TiagoOlivoto)
+
+* #003 **EnvRtype** published at G3 Journal: Feb 2021
+  
+* #002 **EnvRtype** published at BiorXv : Oct 2020
+
+* #001 **EnvRtype** repo was created (Jan 2020)
 
 ## Coming Soon
 
