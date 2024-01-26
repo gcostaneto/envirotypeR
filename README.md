@@ -23,6 +23,7 @@ Current version of this package (v0.1.2, Nov 2023) has the following modules:
 
 (1) Generation of a wide number of **environmental features** using remote-data collection based on geographic coordinates and time windows (e.g., planting dates).
 
+* `envirotypeR::WC_Bioclimate`
 * `envirotypeR::get_climate()`
 * `envirotypeR::get_soil()`
 * `envirotypeR::get_spatial()`
@@ -32,6 +33,7 @@ Current version of this package (v0.1.2, Nov 2023) has the following modules:
 
 ## History
 
+* #018 **envirotypeR v0.1.3**  includes a new data set of 19 features from WorldClim Bioclimate`envirotypeR::WC_Bioclimate`/ data("WC_Bioclimate")
 
 * #017 **envirotypeR v0.1.2**  includes a new data set of 27 features from FAO-GAEZ`envirotypeR::GAEZ_AEZ`/ data("GAEZ_AEZ")
   
