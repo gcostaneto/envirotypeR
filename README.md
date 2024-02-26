@@ -13,8 +13,8 @@ Current version of this package (v0.1.2, Nov 2023)  can be installed directly fr
 using the `devtools` package:
 
 ```
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("gcostaneto/envirotypeR",force=TRUE)
+if (!require("devtools")) install.packages("remotes")
+remotes::install_github("gcostaneto/envirotypeR",force=TRUE)
 ```
 
 ## Current Resources
