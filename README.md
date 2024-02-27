@@ -9,7 +9,7 @@
 
 ## Installation 
 
-Current version of this package (v0.1.2, Nov 2023)  can be installed directly from this repository
+Current version of this package (v0.1.4, Feb 2024)  can be installed directly from this repository
 using the `devtools` package:
 
 ```
@@ -19,20 +19,22 @@ remotes::install_github("gcostaneto/envirotypeR",force=TRUE)
 
 ## Current Resources
 
-Current version of this package (v0.1.2, Nov 2023) has the following modules: 
+Current version of this package (v0.1.4, Feb 2024) has the following modules: 
 
 (1) Generation of a wide number of **environmental features** using remote-data collection based on geographic coordinates and time windows (e.g., planting dates).
 
-* `envirotypeR::WC_Bioclimate`
 * `envirotypeR::get_climate()`
 * `envirotypeR::get_soil()`
 * `envirotypeR::get_spatial()`
 * `envirotypeR::get_weather()`
-* `envirotypeR::SRTM_elevation`
-* `envirotypeR::GAEZ_AEZ`
+* `envirotypeR::WC_Bioclimate`  # not available for  v0.1.4, Feb 2024
+* `envirotypeR::SRTM_elevation` # not available for  v0.1.4, Feb 2024
+* `envirotypeR::GAEZ_AEZ`       # not available for  v0.1.4, Feb 2024
 
 ## History
 
+* #018 **envirotypeR v0.1.4**  we removed the data objects (based on raster files / GeoTiff) for further maintenance).
+  
 * #018 **envirotypeR v0.1.3**  includes a new data set of 19 features from WorldClim Bioclimate`envirotypeR::WC_Bioclimate`/ data("WC_Bioclimate")
 
 * #017 **envirotypeR v0.1.2**  includes a new data set of 27 features from FAO-GAEZ`envirotypeR::GAEZ_AEZ`/ data("GAEZ_AEZ")
