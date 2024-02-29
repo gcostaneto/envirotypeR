@@ -51,24 +51,18 @@ get_soil = function(env.id,
                     home.path = NULL,  # home directory. If null, getwd()
                     variables.names='clay',
                #     output_name = NULL, # character sdenoting the name of the model under test
-                    sleep = 15,
+                    sleep = 20,
                     logfile=NULL) # if is TRUE, and n.core is null, then use detectCores() - 1)
 {
 
 
   if(sleep < 15) sleep <- 15
 
-  if (!requireNamespace("doParallel", quietly = TRUE)) {
-    utils::install.packages("doParallel")
-  }
 
   if (!requireNamespace("plyr", quietly = TRUE)) {
     utils::install.packages("plyr")
   }
 
-  if (!requireNamespace("parallel", quietly = TRUE)) {
-    utils::install.packages("parallel")
-  }
 
   if (!requireNamespace("foreach", quietly = TRUE)) {
     utils::install.packages("foreach")
@@ -307,67 +301,20 @@ get_soil = function(env.id,
   startTime <- Sys.time()
   message(paste0('Start at...........................', format(startTime, "%a %b %d %X %Y"),'\n'))
   message(paste0('Number of Environmental Units ........',length( envs_to_pull)))
-  message(paste0('Parallelization.....................[ ',ifelse(isTRUE(parallel),'x',''),' ]'))
+# message(paste0('Parallelization.....................[ ',ifelse(isTRUE(parallel),'x',''),' ]'))
 
 
   # sequential strategy
-  if(parallel == FALSE)
-  {
-    results <- getSoil_helper(.lat = lat,.lon = lon,.env = env.id,.sleep = sleep,.properties = variables.names )
-    message("Soil Grids: Done!")
+  results <- getSoil_helper(.lat = lat,.lon = lon,.env = env.id,.sleep = sleep,.properties = variables.names )
+  message("Soil Grids: Done!")
 
-    results <- plyr::ldply(  results,.id = 'environmental_unit')
-    results <- .features_id_creation(.data =   results)
-    results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
-    results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
-  }
-
-  # parallel strategy
-  # split the vectors into chunks with 'chunk_size' points
-  # apply the function in parallel using 'workers' cores
-  if(parallel == TRUE){
-
-    env.id_par = split_chunk(env.id, length = chunk_size)
-    lat_par =  split_chunk(lat, length = chunk_size)
-    lon_par =  split_chunk(lon, length = chunk_size)
-
-    nworkers <- ifelse(is.null(workers),
-                       trunc(parallel::detectCores() * 0.9), workers)
-    clust <- parallel::makeCluster(nworkers)
-    message(paste0('Number of threads.....................',nworkers))
-
-    on.exit(parallel::stopCluster(clust))
-    results <- list()
-    pb <- progress(max = length(env.id_par), style = 4)
-    for (i in 1:length(env.id_par)) {
-      env.id_par_tmp <- env.id_par[[i]]
-      lat_par_tmp <- lat_par[[i]]
-      lon_par_tmp <- lon_par[[i]]
-      parallel::clusterExport(clust,
-                              varlist = c("getSoilData", "lat_par_tmp", "lon_par_tmp", "variables.names",
-                                          "env.id_par_tmp"),
-                              envir = environment())
-      length_chunk <- length(env.id_par[[i]])
-      temp <- parallel::parLapply(clust, 1:length_chunk, function(j) {
-
-        .temp_res <- getSoil_helper(.lat = lat[j],.lon = lon[j],.env = env.id[j],.sleep = sleep,.properties = variables.names )
+  results <- plyr::ldply(  results,.id = 'environmental_unit')
+  results <- .features_id_creation(.data =   results)
+  results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
+  results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
 
 
-        # .temp_res <-.features_id_creation(.data =    .temp_res,.env = env.id[j] )
-        return(  .temp_res)
-
-
-      })
-      results[[i]] <- plyr::ldply(temp)
-      names(results)[i] = env.id[i]
-      if(i < length(env.id_par)){
-        message("Waiting ", sleep, "s for a new query to the API.")
-        #  msg <- paste0("Chunk ", i, "/", length(env.id_par), " (",length_chunk,  " points) downloaded")
-        # run_progress(pb, actual = i, text = msg)
-        Sys.sleep(sleep)
-      }
-    }
-    message("Soil Grids: Done!")
+   message(paste0('Soil Grids: Done! Thank you, Poggio et al 2021 ! \n'))
     results <- plyr::ldply(  results,.id = 'environmental_unit')
     results <- .features_id_creation(.data =   results)
     results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
