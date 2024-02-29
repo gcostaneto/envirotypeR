@@ -1,12 +1,12 @@
-#'==================================================================================================
-#' Title.    : Estimates the potential environmental types and computs its frequency
-#' Author.   : G Costa-Neto
-#' Created at: 2022-10-01
-#' Updated at: 2023-11-28 (envirotypeR version 0.1.3)
-#' Current Version: 0.1.1 (envirotypeR)
-#'
-#' process_synthetic(), based on nasapower::get_power() from Sparks et al 20218
-#'==================================================================================================
+#==================================================================================================
+# Title.    : Estimates the potential environmental types and computs its frequency
+# Author.   : G Costa-Neto
+# Created at: 2022-10-01
+# Updated at: 2023-11-28 (envirotypeR version 0.1.3)
+# Current Version: 0.1.1 (envirotypeR)
+#
+# process_synthetic(), based on nasapower::get_power() from Sparks et al 20218
+#==================================================================================================
 
 
 #' @title  Estimates the potential environmental types and computs its frequency

@@ -46,70 +46,65 @@
 
 
 get_soil = function(env.id,
-                      lat,
-                      lon,
-                      home.path = NULL,  # home directory. If null, getwd()
-                      output.path = NULL,
-                      variables.names=NULL,
-                      n.core = NULL, #  numeric value denoting the numbe of cores.
-                      output_name = NULL, # charcter denoting the name of the model under test
-                      save = FALSE,
-                      parallel = FALSE,
-                      workers = NULL,
-                      chunk_size = 10,
-                      sleep = 30,
-                      logfile=NULL) # if is TRUE, and n.core is null, then use detectCores() - 1)
+                    lat,
+                    lon,
+                    home.path = NULL,  # home directory. If null, getwd()
+                    variables.names='clay',
+                    output_name = NULL, # character sdenoting the name of the model under test
+                    sleep = 15,
+                    logfile=NULL) # if is TRUE, and n.core is null, then use detectCores() - 1)
 {
-  
-  
+
+
+  if(sleep < 15) sleep <- 15
 
   if (!requireNamespace("doParallel", quietly = TRUE)) {
     utils::install.packages("doParallel")
   }
 
-    if (!requireNamespace("plyr", quietly = TRUE)) {
+  if (!requireNamespace("plyr", quietly = TRUE)) {
     utils::install.packages("plyr")
   }
-  
+
   if (!requireNamespace("parallel", quietly = TRUE)) {
     utils::install.packages("parallel")
   }
-  
+
   if (!requireNamespace("foreach", quietly = TRUE)) {
     utils::install.packages("foreach")
   }
-  
-  
+
+
   if (!requireNamespace("httr", quietly = TRUE)) {
     utils::install.packages("httr")
   }
-  
+
   if (!requireNamespace("jsonlite", quietly = TRUE)) {
     utils::install.packages("jsonlite")
   }
-  
+
   library(jsonlite, include.only = c("fromJSON"))
   library(httr, include.only = c("content", "GET"))
-  
-  if(is.null(logfile)) logfile <-'get_soil_log.txt'
-  
-  
-  # === Support functions =======================================================
-  
 
-  
+  if(is.null(logfile)) logfile <-'get_soil_log.txt'
+
+
+  # === Support functions =======================================================
+
+
+
   .features_id_creation <- function(.data)
   {
     .data <- data.frame(.data)
     .data <- data.frame(.data)
-    .data$depth <- gsub(.data$depth, 
+    .data$depth <- gsub(.data$depth,
                         pattern = "-", replacement = "_")
-    .data$feature <- paste0(.data$property, 
+    .data$feature <- paste0(.data$property,
                             "|", .data$depth)
     return(.data)
   }
-  
-  ## General parameters (that can be integrated into funtion) 
+
+  ## General parameters (that can be integrated into funtion)
   configParams <- list(
     urlTemplate = "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=%f&lat=%f%s&depth=0-5cm&depth=0-30cm&depth=5-15cm&depth=15-30cm&depth=30-60cm&depth=60-100cm&depth=100-200cm&value=Q0.05&value=Q0.5&value=Q0.95&value=mean&value=uncertainty",
     acceptedProps = c(
@@ -126,24 +121,24 @@ get_soil = function(env.id,
       "soc"
     )
   )
-  
+
   formatSoilGrid <- function(
     json = NULL
   ) {
     if (is.null(json)) stop("Missing JSON data.")
     if (!is.list(json)) stop("This does not appear to be JSON data.")
     if (is.null(json$properties$layers)) stop("This does not appear to be SoilGrid data.")
-    
+
     tmpProc <- lapply(seq_len(length(json$properties$layers$depths)), function(i) {
       tmpDf      <- json$properties$layers$depths[[i]]
-      
+
       tmpDf <- cbind(tmpDf$label, tmpDf$values)
-      
+
       tmpDf$name <- json$properties$layers$name[i]
       tmpDf$unit <- json$properties$layers$unit_measure$mapped_units[i]
       tmpDf$lon  <- json$geometry$coordinates[1]
       tmpDf$lat  <- json$geometry$coordinates[2]
-      
+
       colnames(tmpDf) <- c(
         "depth", "q_5", "q_50", "q_95",
         "mean", "uncertainty", "property",
@@ -151,11 +146,11 @@ get_soil = function(env.id,
       )
       return(tmpDf)
     })
-    
+
     return(do.call("rbind", tmpProc))
   }
-  
-  
+
+
   getSoilData <- function(
     lon = 0,
     lat = 0,
@@ -163,29 +158,29 @@ get_soil = function(env.id,
     verbose = F
   ) {
     if (is.null(url)) stop("Missing URL signature.")
-    
+
     if (any(!properties %in% configParams$acceptedProps)) stop("Incorrect properties.")
-    
+
     url <- configParams$urlTemplate
     propString <- paste("&property=", properties, collapse = "", sep = "")
-    
+
     finalURL <- sprintf(url, lon, lat, propString)
-    
+
     if (verbose) message("Getting query...")
-    
+
     getReq  <- httr::GET(finalURL)
     getReq2 <- httr::content(getReq, "text", encoding = "ISO-8859-1")
-    
+
     jsonReq <- jsonlite::fromJSON(getReq2)
-    
+
     if (verbose) message("Finished (", round(jsonReq$query_time_s, 3), "s)")
-    
+
     return(formatSoilGrid(jsonReq))
   }
-  
-  
+
+
   getSoil_helper<-function(.env,.lat,.lon,.properties='clay',.sleep=10) {
-    
+
     sec_to_hms <- function(t){
       paste(formatC(t %/% (60*60) %% 24, width = 2, format = "d", flag = "0"),
             formatC(t %/% 60 %% 60, width = 2, format = "d", flag = "0"),
@@ -193,7 +188,7 @@ get_soil = function(env.id,
             sep = ":"
       )
     }
-    
+
     progress <- function(min = 0,
                          max = 100,
                          leftd = "|",
@@ -212,7 +207,7 @@ get_soil = function(env.id,
                   width = width,
                   time = time))
     }
-    
+
     run_progress <- function(pb,
                              actual,
                              text = "",
@@ -240,12 +235,12 @@ get_soil = function(env.id,
         message("\n")
       }
     }
-    
+
     # Initialize a list to store the results
     n.env = length(.env)
     my_result <- vector("list", n.env)
     pb <- progress(max = n.env, style = 4)
-    
+
     for (i in 1:n.env) {
       success <- FALSE
       while (!success) {
@@ -265,32 +260,32 @@ get_soil = function(env.id,
       msg <- paste0("Env ", .env[i], " (", i, "/",  n.env, ") ", "downloaded")
       run_progress(pb, actual = i, text = msg)
     }
-    
+
     # renaming it
-    
+
     # Return the list of results
     return(my_result)
   }
-  
-    # split a vector into chunks with a given length
+
+  # split a vector into chunks with a given length
   split_chunk <- function(vec, length){
     split(vec, ceiling(seq_along(vec) / length))
   }
-  
-  
-  
-  
+
+
+
+
   message("------------------------------------------------")
   message('get_soil() - Pulling Soil Features from SoilGrids')
   message('Connecting to the API client')
   message('https://soilgrids.org')
   message("------------------------------------------------  \n")
-  
-  
-  
+
+
+
   if(is.null(home.path)) home.path = getwd()
   if(is.null(   output.path))    output.path = getwd()
-  
+
   if (is.null(variables.names)) {
     variables.names = c("bdod",
                         "cec",
@@ -299,48 +294,48 @@ get_soil = function(env.id,
                         "phh2o",
                         "sand",
                         "soc")
-    
-  }
-  
-  
-  
 
-  
+  }
+
+
+
+
+
   ####
-  
+
   envs_to_pull <- unique(env.id)
   startTime <- Sys.time()
   message(paste0('Start at...........................', format(startTime, "%a %b %d %X %Y"),'\n'))
   message(paste0('Number of Environmental Units ........',length( envs_to_pull)))
   message(paste0('Parallelization.....................[ ',ifelse(isTRUE(parallel),'x',''),' ]'))
 
-  
+
   # sequential strategy
   if(parallel == FALSE)
   {
     results <- getSoil_helper(.lat = lat,.lon = lon,.env = env.id,.sleep = sleep,.properties = variables.names )
     message("Soil Grids: Done!")
-    
+
     results <- plyr::ldply(  results,.id = 'environmental_unit')
     results <- .features_id_creation(.data =   results)
     results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
     results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
   }
-  
+
   # parallel strategy
   # split the vectors into chunks with 'chunk_size' points
   # apply the function in parallel using 'workers' cores
   if(parallel == TRUE){
-    
+
     env.id_par = split_chunk(env.id, length = chunk_size)
     lat_par =  split_chunk(lat, length = chunk_size)
     lon_par =  split_chunk(lon, length = chunk_size)
-    
+
     nworkers <- ifelse(is.null(workers),
                        trunc(parallel::detectCores() * 0.9), workers)
     clust <- parallel::makeCluster(nworkers)
     message(paste0('Number of threads.....................',nworkers))
-    
+
     on.exit(parallel::stopCluster(clust))
     results <- list()
     pb <- progress(max = length(env.id_par), style = 4)
@@ -354,14 +349,14 @@ get_soil = function(env.id,
                               envir = environment())
       length_chunk <- length(env.id_par[[i]])
       temp <- parallel::parLapply(clust, 1:length_chunk, function(j) {
-        
+
         .temp_res <- getSoil_helper(.lat = lat[j],.lon = lon[j],.env = env.id[j],.sleep = sleep,.properties = variables.names )
 
-        
-       # .temp_res <-.features_id_creation(.data =    .temp_res,.env = env.id[j] )
+
+        # .temp_res <-.features_id_creation(.data =    .temp_res,.env = env.id[j] )
         return(  .temp_res)
-        
-        
+
+
       })
       results[[i]] <- plyr::ldply(temp)
       names(results)[i] = env.id[i]
@@ -372,35 +367,35 @@ get_soil = function(env.id,
         Sys.sleep(sleep)
       }
     }
-       message("Soil Grids: Done!")
-       results <- plyr::ldply(  results,.id = 'environmental_unit')
-       results <- .features_id_creation(.data =   results)
-       results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
-       results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
+    message("Soil Grids: Done!")
+    results <- plyr::ldply(  results,.id = 'environmental_unit')
+    results <- .features_id_creation(.data =   results)
+    results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
+    results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
   }
-  
- # results_joint <- reshape2::dcast( plyr::ldply(results),env~feature,value.var = 'mean')
 
-  
- # results <- reshape2::dcast( results ,env~feature,value.var = 'mean') #plyr::ldply(results)
-  
+  # results_joint <- reshape2::dcast( plyr::ldply(results),env~feature,value.var = 'mean')
+
+
+  # results <- reshape2::dcast( results ,env~feature,value.var = 'mean') #plyr::ldply(results)
+
   # property | unit | depth | stat (mean etc)
-  
-  
-#  output_soil_mean <- temp #reshape2::dcast(   temp,env~feature,value.var = 'mean')
+
+
+  #  output_soil_mean <- temp #reshape2::dcast(   temp,env~feature,value.var = 'mean')
   # output_soil_mean <- reshape2::dcast(   temp,env~feature,value.var = 'mean')
-  
+
   endTime <- Sys.time()
   #  message(paste0('Environmental Units downloaded ......',  length(unique(  output_soil_mean$env)),'/',length( envs_to_pull)))
   #  message(paste0('Soil Features downloaded.............',  ncol(  output_soil_mean )-1),'\n')
   # message(paste0('Environmental data...................',  length(unique(  output_soil_mean$env))*(ncol(  output_soil_mean )-1)),'\n')
-  
+
   message(paste0('Done!..............................', format(endTime, "%a %b %d %X %Y")))
   message(paste0('Total Time.........................',  round(difftime(endTime,startTime,units = 'secs'),3)))
   message("------------------------------------------------  \n")
-  
-  
-#  return( list(raw_data = results, table_data = results_joint ) )
+
+
+  #  return( list(raw_data = results, table_data = results_joint ) )
   return(results)
-  
+
 }
