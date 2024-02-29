@@ -50,7 +50,7 @@ get_soil = function(env.id,
                     lon,
                     home.path = NULL,  # home directory. If null, getwd()
                     variables.names='clay',
-                    output_name = NULL, # character sdenoting the name of the model under test
+               #     output_name = NULL, # character sdenoting the name of the model under test
                     sleep = 15,
                     logfile=NULL) # if is TRUE, and n.core is null, then use detectCores() - 1)
 {
@@ -284,7 +284,7 @@ get_soil = function(env.id,
 
 
   if(is.null(home.path)) home.path = getwd()
-  if(is.null(   output.path))    output.path = getwd()
+ # if(is.null(   output.path))    output.path = getwd()
 
   if (is.null(variables.names)) {
     variables.names = c("bdod",
