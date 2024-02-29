@@ -306,20 +306,12 @@ get_soil = function(env.id,
 
   # sequential strategy
   results <- getSoil_helper(.lat = lat,.lon = lon,.env = env.id,.sleep = sleep,.properties = variables.names )
-  message("Soil Grids: Done!")
-
-  results <- plyr::ldply(  results,.id = 'environmental_unit')
-  results <- .features_id_creation(.data =   results)
-  results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
-  results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
-
-
    message(paste0('Soil Grids: Done! Thank you, Poggio et al 2021 ! \n'))
     results <- plyr::ldply(  results,.id = 'environmental_unit')
     results <- .features_id_creation(.data =   results)
     results <- reshape2::melt(results ,id.var=c('environmental_unit','property','lat','lon','unit','uncertainty','depth','feature'))
     results <- reshape2::dcast(results,environmental_unit~feature+variable,value.var = 'value')
-  }
+
 
   # results_joint <- reshape2::dcast( plyr::ldply(results),env~feature,value.var = 'mean')
 
