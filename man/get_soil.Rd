@@ -10,7 +10,6 @@ get_soil(
   lon,
   home.path = NULL,
   variables.names = "clay",
-  output_name = NULL,
   sleep = 15,
   logfile = NULL
 )
