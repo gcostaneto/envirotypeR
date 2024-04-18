@@ -5,13 +5,13 @@
 #' Updated at: 2023-12-05 (envirotypeR version 0.1.3)
 #' Current Version: 0.1.1 (envirotypeR)
 #'
-#' process_synthetic(), based on nasapower::get_power() from Sparks et al 20218
+#' process_synthetic(), based on missMDA and FactoMineR
 #'==================================================================================================
 
 #' @title  Feature Imputation and Computation of Environmental Eigenvectors from raw envirotyping data
 
 
-process_synthetic <- function(env.dataframe,missing.rate=0.05,n.synthetic=15,digits=5,impute.missing=TRUE,sample.imp=5)
+process_synthetic <- function(env.dataframe,missing.rate=0.05,n.synthetic=15,digits=5,impute.missing=TRUE,sample.imp=5,return_raw=FALSE)
 {
 
   message("--------------------------------------------------------------------------")
@@ -125,12 +125,26 @@ process_synthetic <- function(env.dataframe,missing.rate=0.05,n.synthetic=15,dig
   message(paste0('Done!..............................', format(endTime, "%a %b %d %X %Y")))
   message(paste0('Total Time.........................',  round(difftime(endTime,startTime,units = 'secs'),2),'s'))
 
-
-  return(list(
+if(isTRUE(return_raw))
+{
+return(list(
     environmental.features = cbind(env.dataframe,.synthetic),
     synthetic.environmental.traits=  .synthetic,
-    variance.explained.by.eigen =.summary_comp ,
+    variance.explained.by.eigen =.summary_comp,
+    variable.components  =  .coordinates,
+    variable.contribution =  .contribution,
+    variable.correlation  =  .correlation),
+    raw_PC_object = .raw_PCs)
+}
+if(isFALSE(return_raw))
+{
+return(list(
+    environmental.features = cbind(env.dataframe,.synthetic),
+    synthetic.environmental.traits=  .synthetic,
+    variance.explained.by.eigen =.summary_comp,
     variable.components  =  .coordinates,
     variable.contribution =  .contribution,
     variable.correlation  =  .correlation))
+}
+  
 }
