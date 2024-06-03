@@ -105,6 +105,7 @@ Costa-Neto, G., Galli, G., Carvalho, H. F., Crossa, J., and Fritsche-Neto, R. (2
 * University of Sao Paulo / ESALQ USP (EnvRtype, from my PhD)
 * CIMMYT (EnvRtype, from my PhD)
 * Cornell University / Buckler Lab
+* Wonderful community of users who always gave a sincere feedback!
   
 # Usage
 
