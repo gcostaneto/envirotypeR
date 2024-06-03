@@ -19,20 +19,22 @@ remotes::install_github("gcostaneto/envirotypeR",force=TRUE)
 
 ## Current Resources
 
-Current version of this package (v0.1.4, Feb 2024) has the following modules: 
+Current version of this package (v0.1.5, Jun 2024) has the following modules: 
 
 (1) Generation of a wide number of **environmental features** using remote-data collection based on geographic coordinates and time windows (e.g., planting dates).
 
-* `envirotypeR::get_climate()`
+* `envirotypeR::process_synthetic()`
 * `envirotypeR::get_soil()`
 * `envirotypeR::get_spatial()`
 * `envirotypeR::get_weather()`
 * `envirotypeR::WC_Bioclimate`  # not available for  v0.1.4, Feb 2024
-* `envirotypeR::SRTM_elevation` # not available for  v0.1.4, Feb 2024
+* `envirotypeR::SRTM_elevation` # not available for  v0.1.4, Feb 2024, please use  wc_elev <- terra::rast("https://raw.githubusercontent.com/gcostaneto/envirotypeR/main/inst/extdata/wc2.1_2.5m_elev.tif")
 * `envirotypeR::GAEZ_AEZ`       # not available for  v0.1.4, Feb 2024
 
 ## History
 
+* #019 **envirotypeR v0.1.5**  we added envirotypeR::process_synthetic() and created documentations for other functions.
+  
 * #018 **envirotypeR v0.1.4**  we removed the data objects (based on raster files / GeoTiff) for further maintenance).
   
 * #018 **envirotypeR v0.1.3**  includes a new data set of 19 features from WorldClim Bioclimate`envirotypeR::WC_Bioclimate`/ data("WC_Bioclimate")
