@@ -82,9 +82,8 @@ Current version of this package (v0.1.5, Jun 2024) has the following modules:
 * CRAN
 * process_cleaning()
 * process_index()
-* process_stages() 
-* process_synthetic() 
-* process_colinearity()
+* process_stages()
+* variable_selection()
 * fit_frequency()
 * fit_Wmatrix()
 * fit_Smatrix() 
@@ -92,14 +91,7 @@ Current version of this package (v0.1.5, Jun 2024) has the following modules:
 * fit_Tmatrix() 
 * fit_Mmatrix() 
 * fit_Nmatrix() 
-* fit_singleERM()
-* fit_multipleERM()
-* fit_stageERM()
-* find_optimalSites()
-* build_model() 
-* predict_phenotype()
 * plot_envirotype()
-* envirotyping()
 
 
 ## Citation
