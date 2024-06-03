@@ -33,7 +33,9 @@ Current version of this package (v0.1.5, Jun 2024) has the following modules:
 
 ## History
 
-* #019 **envirotypeR v0.1.5**  we added envirotypeR::process_synthetic() and created documentations for other functions.
+* #020 **envirotypeR v0.1.5**  we added envirotypeR::process_synthetic() and created documentations for other functions.
+
+* #019 **envirotypeR v0.1.4**  raster package migrating to geodata, so EnvRtype::get_weather() is facing some issues.
   
 * #018 **envirotypeR v0.1.4**  we removed the data objects (based on raster files / GeoTiff) for further maintenance).
   
