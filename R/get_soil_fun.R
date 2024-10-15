@@ -125,7 +125,8 @@ get_soil = function(env.id,
       "phh2o",
       "sand",
       "silt",
-      "soc"
+      "soc",
+      "wv0010", "wv0033", "wv1500"
     )
   )
 
@@ -299,7 +300,7 @@ get_soil = function(env.id,
                         "clay",
                         "nitrogen",
                         "phh2o",
-                        "sand",
+                        "sand",   "wv0010", "wv0033", "wv1500",
                         "soc")
 
   }
