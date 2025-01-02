@@ -58,7 +58,7 @@
 #----------------------------------------------------------------------------------------
 
 
-get_soil2 = function(env.id,
+get_soil = function(env.id,
                     lat,
                     lon,
                     home.path = NULL,  # home directory. If null, getwd()
