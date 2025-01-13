@@ -254,10 +254,10 @@ get_soil = function(env.id,
       success <- FALSE
       while(!success) {
         tryCatch({
-          my_result[[i]] <- suppressWarnings(getSoilData2(lon = .lon[i], lat = .lat[i], properties = .properties))
+          my_result[[i]] <- suppressWarnings(getSoilData(lon = .lon[i], lat = .lat[i], properties = .properties))
           names(my_result)[i] <- .env[i]  # Changed from .env[i] to envs[i]
           success <- TRUE
-         # message(paste0('Doing....',i,'/',n.env,'\n'))
+          # message(paste0('Doing....',i,'/',n.env,'\n'))
         }, error = function(e) {
           message("Error encountered on iteration ", i, ": ", e$message, "\n")
           message("Waiting ", .sleep, "s for a new query to the API.")
